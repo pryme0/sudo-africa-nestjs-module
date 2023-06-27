@@ -2,7 +2,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "name": "@prymejo/sudo-africa-nestjs-module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "<p align=\"center\">   <a href=\"http://nestjs.com/\" target=\"blank\"><img src=\"https://nestjs.com/img/logo-small.svg\" width=\"200\" alt=\"Nest Logo\" /></a> </p>",
   "author": "prymejo",
   "private": false,
@@ -47,5 +47,9 @@
   "bugs": {
     "url": "https://github.com/pryme0/sudo-africa-cards-module/issues"
   },
-  "homepage": "https://github.com/pryme0/sudo-africa-cards-module#readme"
+  "homepage": "https://github.com/pryme0/sudo-africa-cards-module#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }
