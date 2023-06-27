@@ -4,8 +4,8 @@
   "name": "@prymejo/sudo-africa-nestjs-module",
   "version": "0.0.1",
   "description": "<p align=\"center\">   <a href=\"http://nestjs.com/\" target=\"blank\"><img src=\"https://nestjs.com/img/logo-small.svg\" width=\"200\" alt=\"Nest Logo\" /></a> </p>",
-  "author": "",
-  "private": true,
+  "author": "prymejo",
+  "private": false,
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && tsc",
