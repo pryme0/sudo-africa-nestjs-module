@@ -1,8 +1,5 @@
 # compiled output
-<<<<<<< HEAD
-=======
 /dist
->>>>>>> 8885362 (add live url, update implementation to accomodate @nestjs/axios baseUrl)
 /node_modules
 
 # Logs
