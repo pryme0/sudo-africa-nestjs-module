@@ -8,7 +8,6 @@ import {
   UpdateCardInterface,
   OrderCardsInterface,
 } from './interfaces';
-import { Sudo_AFRICA_BASE_URL } from './constants';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable()
@@ -18,7 +17,7 @@ export class SudoAfricaCardsService {
   async createCard(payload: CreateCardInterface): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.post(`${Sudo_AFRICA_BASE_URL}/cards`, payload),
+        this.httpService.post(`/cards`, payload),
       );
 
       return data;
@@ -34,7 +33,7 @@ export class SudoAfricaCardsService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/cards?page=${payload.page}&limit=${payload.limit}`,
+          `/cards?page=${payload.page}&limit=${payload.limit}`,
         ),
       );
 
@@ -50,7 +49,7 @@ export class SudoAfricaCardsService {
   async getCard(payload: FindCardInterface): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.get(`${Sudo_AFRICA_BASE_URL}/cards/${payload.id}`),
+        this.httpService.get(`/cards/${payload.id}`),
       );
 
       return data;
@@ -66,7 +65,7 @@ export class SudoAfricaCardsService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/cards/customer/${payload.id}`,
+          `/cards/customer/${payload.id}`,
         ),
       );
 
@@ -83,7 +82,7 @@ export class SudoAfricaCardsService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.put(
-          `${Sudo_AFRICA_BASE_URL}/cards/${payload.id}`,
+          `/cards/${payload.id}`,
           payload.data,
         ),
       );
@@ -101,7 +100,7 @@ export class SudoAfricaCardsService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.put(
-          `${Sudo_AFRICA_BASE_URL}/cards/${payload.id}/send-pin`,
+          `/cards/${payload.id}/send-pin`,
         ),
       );
 
@@ -118,7 +117,7 @@ export class SudoAfricaCardsService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.put(
-          `${Sudo_AFRICA_BASE_URL}/cards/${payload.id}/pin`,
+          `/cards/${payload.id}/pin`,
           payload.pins,
         ),
       );
@@ -136,7 +135,7 @@ export class SudoAfricaCardsService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.put(
-          `${Sudo_AFRICA_BASE_URL}/cards/${payload.id}/enroll2fa`,
+          `/cards/${payload.id}/enroll2fa`,
         ),
       );
 
@@ -153,7 +152,7 @@ export class SudoAfricaCardsService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/cards/${payload.id}/token`,
+          `/cards/${payload.id}/token`,
         ),
       );
 
@@ -171,7 +170,7 @@ export class SudoAfricaCardsService {
   async orderCards(payload: OrderCardsInterface): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.put(`${Sudo_AFRICA_BASE_URL}/cards/order`, payload),
+        this.httpService.put(`/cards/order`, payload),
       );
 
       return data;

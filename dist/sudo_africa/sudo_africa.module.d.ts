@@ -1,4 +1,5 @@
 import { DynamicModule } from '@nestjs/common';
+import { ENVIRONMENT } from './constants';
 export declare class SudAfricaModule {
-    static register(SUDO_API_KEY: string): DynamicModule;
+    static register(api_key: string, environment: ENVIRONMENT): DynamicModule;
 }

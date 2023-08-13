@@ -7,7 +7,6 @@ import {
   FindCustomerInterface,
   UpdateCustomerPayloadInterface,
 } from './interfaces';
-import { Sudo_AFRICA_BASE_URL } from './constants';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable()
@@ -19,7 +18,7 @@ export class SudoAfricaService {
   ): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.post(`${Sudo_AFRICA_BASE_URL}/customers`, payload),
+        this.httpService.post(`/customers`, payload),
       );
       return data;
     } catch (error) {
@@ -32,7 +31,7 @@ export class SudoAfricaService {
   ): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.post(`${Sudo_AFRICA_BASE_URL}/customers`, payload),
+        this.httpService.post(`/customers`, payload),
       );
 
       return data;
@@ -45,7 +44,7 @@ export class SudoAfricaService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/customers?page=${payload.page}&limit=${payload.limit}`,
+          `/customers?page=${payload.page}&limit=${payload.limit}`,
         ),
       );
 
@@ -58,7 +57,7 @@ export class SudoAfricaService {
   async getCustomer(payload: FindCustomerInterface): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.get(`${Sudo_AFRICA_BASE_URL}/customers/${payload.id}`),
+        this.httpService.get(`/customers/${payload.id}`),
       );
 
       return data;
@@ -71,7 +70,7 @@ export class SudoAfricaService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.put(
-          `${Sudo_AFRICA_BASE_URL}/customers/${payload.id}`,
+          `/customers/${payload.id}`,
           payload.data,
         ),
       );

@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SudoAfricaAuthorizationService = void 0;
 const common_1 = require("@nestjs/common");
 const axios_1 = require("@nestjs/axios");
-const constants_1 = require("./constants");
 const rxjs_1 = require("rxjs");
 let SudoAfricaAuthorizationService = class SudoAfricaAuthorizationService {
     constructor(httpService) {
@@ -20,7 +19,7 @@ let SudoAfricaAuthorizationService = class SudoAfricaAuthorizationService {
     }
     async getAuthorizations(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/authorizations?page=${payload === null || payload === void 0 ? void 0 : payload.page}
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`cards/authorizations?page=${payload === null || payload === void 0 ? void 0 : payload.page}
           &limit=${payload === null || payload === void 0 ? void 0 : payload.limit}&fromDate=${payload === null || payload === void 0 ? void 0 : payload.fromDate}&toDate=${payload === null || payload === void 0 ? void 0 : payload.toDate}`));
             return data;
         }
@@ -33,7 +32,7 @@ let SudoAfricaAuthorizationService = class SudoAfricaAuthorizationService {
     }
     async getCardAuthorizations(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/${payload.id}/authorizations`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/cards/${payload.id}/authorizations`));
             return data;
         }
         catch (error) {
@@ -45,7 +44,7 @@ let SudoAfricaAuthorizationService = class SudoAfricaAuthorizationService {
     }
     async getAuthorization(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/authorizations/${payload.id}`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/cards/authorizations/${payload.id}`));
             return data;
         }
         catch (error) {
@@ -57,7 +56,7 @@ let SudoAfricaAuthorizationService = class SudoAfricaAuthorizationService {
     }
     async updateCardAuthorization(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/authorization/${payload.id}`, payload.metadata));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`/cards/authorization/${payload.id}`, payload.metadata));
             return data;
         }
         catch (error) {

@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { FindCardInterface } from './interfaces';
-import { Sudo_AFRICA_BASE_URL } from './constants';
 import { firstValueFrom } from 'rxjs';
 
 import {
@@ -16,7 +15,7 @@ export class SudoAfricaFundingSourceService {
   async getFundingSources(): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.get(`${Sudo_AFRICA_BASE_URL}/fundingsources`),
+        this.httpService.get(`/fundingsources`),
       );
 
       return data;
@@ -32,7 +31,7 @@ export class SudoAfricaFundingSourceService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/fundingsources/${payload.id}`,
+          `/fundingsources/${payload.id}`,
         ),
       );
 
@@ -51,7 +50,7 @@ export class SudoAfricaFundingSourceService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.post(
-          `${Sudo_AFRICA_BASE_URL}/fundingsources`,
+          `/fundingsources`,
           payload,
         ),
       );
@@ -71,7 +70,7 @@ export class SudoAfricaFundingSourceService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.put(
-          `${Sudo_AFRICA_BASE_URL}/fundingsources/${payload.id}`,
+          `/fundingsources/${payload.id}`,
           payload.data,
         ),
       );

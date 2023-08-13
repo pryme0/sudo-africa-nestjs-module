@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { FindCardInterface, BaseQueryInterface } from './interfaces';
-import { Sudo_AFRICA_BASE_URL } from './constants';
 import { firstValueFrom } from 'rxjs';
 import {
   CreateCardDisputeInterface,
@@ -16,7 +15,7 @@ export class SudoAfricaDisputeService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/cards/disputes?page=${payload?.page}
+          `/cards/disputes?page=${payload?.page}
           &limit=${payload?.limit}`,
         ),
       );
@@ -34,7 +33,7 @@ export class SudoAfricaDisputeService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/cards/disputes/${payload.id}`,
+          `/cards/disputes/${payload.id}`,
         ),
       );
 
@@ -51,7 +50,7 @@ export class SudoAfricaDisputeService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.post(
-          `${Sudo_AFRICA_BASE_URL}/cards/disputes`,
+          `/cards/disputes`,
           payload,
         ),
       );
@@ -69,7 +68,7 @@ export class SudoAfricaDisputeService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.put(
-          `${Sudo_AFRICA_BASE_URL}/cards/disputes/${payload.id}`,
+          `/cards/disputes/${payload.id}`,
           payload.data,
         ),
       );

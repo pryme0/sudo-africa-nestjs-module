@@ -11,7 +11,6 @@ import {
   FindCardInterface,
   BankEnquiryInterface,
 } from './interfaces';
-import { Sudo_AFRICA_BASE_URL } from './constants';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable()
@@ -21,7 +20,7 @@ export class SudoAfricaAccountService {
   async createAccount(payload: CreateAccountInterface): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.post(`${Sudo_AFRICA_BASE_URL}/accounts`, payload),
+        this.httpService.post(`/accounts`, payload),
       );
 
       return data;
@@ -37,7 +36,7 @@ export class SudoAfricaAccountService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/accounts?page=${payload.page}&limit=${payload.limit}`,
+          `/accounts?page=${payload.page}&limit=${payload.limit}`,
         ),
       );
 
@@ -53,7 +52,7 @@ export class SudoAfricaAccountService {
   async getAccount(payload: FindCardInterface): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.get(`${Sudo_AFRICA_BASE_URL}/accounts/${payload.id}`),
+        this.httpService.get(`/accounts/${payload.id}`),
       );
 
       return data;
@@ -70,9 +69,7 @@ export class SudoAfricaAccountService {
   async getAccountBalance(payload: FindCardInterface): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/accounts/${payload.id}/balance`,
-        ),
+        this.httpService.get(`/accounts/${payload.id}/balance`),
       );
 
       return data;
@@ -91,7 +88,7 @@ export class SudoAfricaAccountService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/accounts/${payload.id}/transactions?page=${payload.page}
+          `/accounts/${payload.id}/transactions?page=${payload.page}
           &limit=${payload.limit}&fromDate=${payload.fromDate}&toDate=${payload.toDate}`,
         ),
       );
@@ -108,9 +105,7 @@ export class SudoAfricaAccountService {
   async getBankList(payload: GetBankListInterface): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/accounts/banks?country=${payload.country}`,
-        ),
+        this.httpService.get(`/accounts/banks?country=${payload.country}`),
       );
 
       return data;
@@ -125,10 +120,7 @@ export class SudoAfricaAccountService {
   async nameEnquiry(payload: BankEnquiryInterface): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.post(
-          `${Sudo_AFRICA_BASE_URL}/accounts/transfer/name-enquiry`,
-          payload,
-        ),
+        this.httpService.post(`/accounts/transfer/name-enquiry`, payload),
       );
 
       return data;
@@ -143,10 +135,7 @@ export class SudoAfricaAccountService {
   async fundTransfer(payload: FundTransferInterface): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.post(
-          `${Sudo_AFRICA_BASE_URL}/accounts/transfer`,
-          payload,
-        ),
+        this.httpService.post(`/accounts/transfer`, payload),
       );
 
       return data;
@@ -161,9 +150,7 @@ export class SudoAfricaAccountService {
   async getTransferStatus(payload: GetTransferStatusInterface): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/accounts/transfers/${payload.transferId}`,
-        ),
+        this.httpService.get(`/accounts/transfers/${payload.transferId}`),
       );
 
       return data;
@@ -180,9 +167,7 @@ export class SudoAfricaAccountService {
   async transferRate(payload: GetTransferRateInterface): Promise<any> {
     try {
       const { data } = await firstValueFrom(
-        this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/accounts/transfer/rate/${payload.currencyPair}`,
-        ),
+        this.httpService.get(`/accounts/transfer/rate/${payload.currencyPair}`),
       );
 
       return data;

@@ -8,10 +8,15 @@ import { SudoAfricaTransactionService } from './sudo_africa.transaction.service'
 import { SudoAfricaDisputeService } from './sudo_africa_dispute.service';
 import { SudoAfricaFundingSourceService } from './sudo_africa_funding_source.service';
 import { SudoAfricaAuthorizationService } from './sudo_africa_authorization.service';
+import {
+  SUDO_AFRICA_LIVE_URL,
+  Sudo_AFRICA_SANDBOX_URL,
+  ENVIRONMENT,
+} from './constants';
 
 @Injectable()
 export class SudAfricaModule {
-  static register(SUDO_API_KEY: string): DynamicModule {
+  static register(api_key: string, environment: ENVIRONMENT): DynamicModule {
     return {
       module: SudAfricaModule,
       imports: [
@@ -19,8 +24,12 @@ export class SudAfricaModule {
           useFactory: () => {
             return {
               headers: {
-                Authorization: `Bearer ${SUDO_API_KEY}`,
+                Authorization: `Bearer ${api_key}`,
               },
+              baseURL:
+                environment === 'production'
+                  ? SUDO_AFRICA_LIVE_URL
+                  : Sudo_AFRICA_SANDBOX_URL,
             };
           },
         }),

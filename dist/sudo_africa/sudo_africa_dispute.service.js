@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SudoAfricaDisputeService = void 0;
 const common_1 = require("@nestjs/common");
 const axios_1 = require("@nestjs/axios");
-const constants_1 = require("./constants");
 const rxjs_1 = require("rxjs");
 let SudoAfricaDisputeService = class SudoAfricaDisputeService {
     constructor(httpService) {
@@ -20,7 +19,7 @@ let SudoAfricaDisputeService = class SudoAfricaDisputeService {
     }
     async getDisputes(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/disputes?page=${payload === null || payload === void 0 ? void 0 : payload.page}
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/cards/disputes?page=${payload === null || payload === void 0 ? void 0 : payload.page}
           &limit=${payload === null || payload === void 0 ? void 0 : payload.limit}`));
             return data;
         }
@@ -33,7 +32,7 @@ let SudoAfricaDisputeService = class SudoAfricaDisputeService {
     }
     async getDispute(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/disputes/${payload.id}`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/cards/disputes/${payload.id}`));
             return data;
         }
         catch (error) {
@@ -45,7 +44,7 @@ let SudoAfricaDisputeService = class SudoAfricaDisputeService {
     }
     async createDispute(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.post(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/disputes`, payload));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.post(`/cards/disputes`, payload));
             return data;
         }
         catch (error) {
@@ -57,7 +56,7 @@ let SudoAfricaDisputeService = class SudoAfricaDisputeService {
     }
     async updateCardDispute(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/disputes/${payload.id}`, payload.data));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`/cards/disputes/${payload.id}`, payload.data));
             return data;
         }
         catch (error) {

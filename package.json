@@ -2,10 +2,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "name": "@prymejo/sudo-africa-nestjs-module",
-  "version": "1.0.1",
+  "version": "0.0.1",
   "description": "<p align=\"center\">   <a href=\"http://nestjs.com/\" target=\"blank\"><img src=\"https://nestjs.com/img/logo-small.svg\" width=\"200\" alt=\"Nest Logo\" /></a> </p>",
-  "author": "prymejo",
-  "private": false,
+  "author": "",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && tsc",
@@ -27,9 +27,6 @@
     "tsconfig-paths": "4.1.1",
     "typescript": "^4.7.4"
   },
-  "engines": {
-    "node": ">=18"
-  },
   "keywords": [
     "cards",
     "visacard",
@@ -39,17 +36,5 @@
     "finance",
     "sudo.africa",
     "sudo africa"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pryme0/sudo-africa-cards-module.git"
-  },
-  "bugs": {
-    "url": "https://github.com/pryme0/sudo-africa-cards-module/issues"
-  },
-  "homepage": "https://github.com/pryme0/sudo-africa-cards-module#readme",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  }
+  ]
 }

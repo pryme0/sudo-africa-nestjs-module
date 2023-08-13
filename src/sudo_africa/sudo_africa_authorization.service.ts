@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { FindCardInterface, BaseQueryInterface } from './interfaces';
-import { Sudo_AFRICA_BASE_URL } from './constants';
 import { firstValueFrom } from 'rxjs';
 import { UpdateCardTransactionInterface } from './interfaces/card_transaction.interface';
 
@@ -13,7 +12,7 @@ export class SudoAfricaAuthorizationService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/cards/authorizations?page=${payload?.page}
+          `cards/authorizations?page=${payload?.page}
           &limit=${payload?.limit}&fromDate=${payload?.fromDate}&toDate=${payload?.toDate}`,
         ),
       );
@@ -31,7 +30,7 @@ export class SudoAfricaAuthorizationService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/cards/${payload.id}/authorizations`,
+          `/cards/${payload.id}/authorizations`,
         ),
       );
 
@@ -48,7 +47,7 @@ export class SudoAfricaAuthorizationService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.get(
-          `${Sudo_AFRICA_BASE_URL}/cards/authorizations/${payload.id}`,
+          `/cards/authorizations/${payload.id}`,
         ),
       );
 
@@ -67,7 +66,7 @@ export class SudoAfricaAuthorizationService {
     try {
       const { data } = await firstValueFrom(
         this.httpService.put(
-          `${Sudo_AFRICA_BASE_URL}/cards/authorization/${payload.id}`,
+          `/cards/authorization/${payload.id}`,
           payload.metadata,
         ),
       );

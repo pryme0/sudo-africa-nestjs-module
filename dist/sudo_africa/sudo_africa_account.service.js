@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SudoAfricaAccountService = void 0;
 const common_1 = require("@nestjs/common");
 const axios_1 = require("@nestjs/axios");
-const constants_1 = require("./constants");
 const rxjs_1 = require("rxjs");
 let SudoAfricaAccountService = class SudoAfricaAccountService {
     constructor(httpService) {
@@ -20,7 +19,7 @@ let SudoAfricaAccountService = class SudoAfricaAccountService {
     }
     async createAccount(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.post(`${constants_1.Sudo_AFRICA_BASE_URL}/accounts`, payload));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.post(`/accounts`, payload));
             return data;
         }
         catch (error) {
@@ -32,7 +31,7 @@ let SudoAfricaAccountService = class SudoAfricaAccountService {
     }
     async getAccounts(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/accounts?page=${payload.page}&limit=${payload.limit}`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/accounts?page=${payload.page}&limit=${payload.limit}`));
             return data;
         }
         catch (error) {
@@ -44,7 +43,7 @@ let SudoAfricaAccountService = class SudoAfricaAccountService {
     }
     async getAccount(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/accounts/${payload.id}`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/accounts/${payload.id}`));
             return data;
         }
         catch (error) {
@@ -57,7 +56,7 @@ let SudoAfricaAccountService = class SudoAfricaAccountService {
     }
     async getAccountBalance(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/accounts/${payload.id}/balance`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/accounts/${payload.id}/balance`));
             return data;
         }
         catch (error) {
@@ -70,7 +69,7 @@ let SudoAfricaAccountService = class SudoAfricaAccountService {
     }
     async getAccountTransactions(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/accounts/${payload.id}/transactions?page=${payload.page}
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/accounts/${payload.id}/transactions?page=${payload.page}
           &limit=${payload.limit}&fromDate=${payload.fromDate}&toDate=${payload.toDate}`));
             return data;
         }
@@ -83,7 +82,7 @@ let SudoAfricaAccountService = class SudoAfricaAccountService {
     }
     async getBankList(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/accounts/banks?country=${payload.country}`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/accounts/banks?country=${payload.country}`));
             return data;
         }
         catch (error) {
@@ -95,7 +94,7 @@ let SudoAfricaAccountService = class SudoAfricaAccountService {
     }
     async nameEnquiry(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.post(`${constants_1.Sudo_AFRICA_BASE_URL}/accounts/transfer/name-enquiry`, payload));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.post(`/accounts/transfer/name-enquiry`, payload));
             return data;
         }
         catch (error) {
@@ -108,7 +107,7 @@ let SudoAfricaAccountService = class SudoAfricaAccountService {
     async fundTransfer(payload) {
         var _a, _b, _c;
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.post(`${constants_1.Sudo_AFRICA_BASE_URL}/accounts/transfer`, payload));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.post(`/accounts/transfer`, payload));
             return data;
         }
         catch (error) {
@@ -120,7 +119,7 @@ let SudoAfricaAccountService = class SudoAfricaAccountService {
     }
     async getTransferStatus(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/accounts/transfers/${payload.transferId}`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/accounts/transfers/${payload.transferId}`));
             return data;
         }
         catch (error) {
@@ -133,7 +132,7 @@ let SudoAfricaAccountService = class SudoAfricaAccountService {
     }
     async transferRate(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/accounts/transfer/rate/${payload.currencyPair}`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/accounts/transfer/rate/${payload.currencyPair}`));
             return data;
         }
         catch (error) {

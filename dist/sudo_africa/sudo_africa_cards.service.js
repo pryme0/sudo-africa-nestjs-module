@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SudoAfricaCardsService = void 0;
 const common_1 = require("@nestjs/common");
 const axios_1 = require("@nestjs/axios");
-const constants_1 = require("./constants");
 const rxjs_1 = require("rxjs");
 let SudoAfricaCardsService = class SudoAfricaCardsService {
     constructor(httpService) {
@@ -20,7 +19,7 @@ let SudoAfricaCardsService = class SudoAfricaCardsService {
     }
     async createCard(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.post(`${constants_1.Sudo_AFRICA_BASE_URL}/cards`, payload));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.post(`/cards`, payload));
             return data;
         }
         catch (error) {
@@ -32,7 +31,7 @@ let SudoAfricaCardsService = class SudoAfricaCardsService {
     }
     async getCards(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/cards?page=${payload.page}&limit=${payload.limit}`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/cards?page=${payload.page}&limit=${payload.limit}`));
             return data;
         }
         catch (error) {
@@ -44,7 +43,7 @@ let SudoAfricaCardsService = class SudoAfricaCardsService {
     }
     async getCard(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/${payload.id}`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/cards/${payload.id}`));
             return data;
         }
         catch (error) {
@@ -56,7 +55,7 @@ let SudoAfricaCardsService = class SudoAfricaCardsService {
     }
     async getCustomerCards(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/customer/${payload.id}`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/cards/customer/${payload.id}`));
             return data;
         }
         catch (error) {
@@ -68,7 +67,7 @@ let SudoAfricaCardsService = class SudoAfricaCardsService {
     }
     async updateCard(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/${payload.id}`, payload.data));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`/cards/${payload.id}`, payload.data));
             return data;
         }
         catch (error) {
@@ -80,7 +79,7 @@ let SudoAfricaCardsService = class SudoAfricaCardsService {
     }
     async sendDefaultCardPin(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/${payload.id}/send-pin`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`/cards/${payload.id}/send-pin`));
             return data;
         }
         catch (error) {
@@ -92,7 +91,7 @@ let SudoAfricaCardsService = class SudoAfricaCardsService {
     }
     async changeCardPin(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/${payload.id}/pin`, payload.pins));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`/cards/${payload.id}/pin`, payload.pins));
             return data;
         }
         catch (error) {
@@ -104,7 +103,7 @@ let SudoAfricaCardsService = class SudoAfricaCardsService {
     }
     async enrolCardFor2Fa(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/${payload.id}/enroll2fa`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`/cards/${payload.id}/enroll2fa`));
             return data;
         }
         catch (error) {
@@ -116,7 +115,7 @@ let SudoAfricaCardsService = class SudoAfricaCardsService {
     }
     async generateCardToken(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/${payload.id}/token`));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.get(`/cards/${payload.id}/token`));
             return data;
         }
         catch (error) {
@@ -129,7 +128,7 @@ let SudoAfricaCardsService = class SudoAfricaCardsService {
     }
     async orderCards(payload) {
         try {
-            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`${constants_1.Sudo_AFRICA_BASE_URL}/cards/order`, payload));
+            const { data } = await (0, rxjs_1.firstValueFrom)(this.httpService.put(`/cards/order`, payload));
             return data;
         }
         catch (error) {

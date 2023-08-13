@@ -17,8 +17,9 @@ const sudo_africa_transaction_service_1 = require("./sudo_africa.transaction.ser
 const sudo_africa_dispute_service_1 = require("./sudo_africa_dispute.service");
 const sudo_africa_funding_source_service_1 = require("./sudo_africa_funding_source.service");
 const sudo_africa_authorization_service_1 = require("./sudo_africa_authorization.service");
+const constants_1 = require("./constants");
 let SudAfricaModule = SudAfricaModule_1 = class SudAfricaModule {
-    static register(SUDO_API_KEY) {
+    static register(api_key, environment) {
         return {
             module: SudAfricaModule_1,
             imports: [
@@ -26,8 +27,11 @@ let SudAfricaModule = SudAfricaModule_1 = class SudAfricaModule {
                     useFactory: () => {
                         return {
                             headers: {
-                                Authorization: `Bearer ${SUDO_API_KEY}`,
+                                Authorization: `Bearer ${api_key}`,
                             },
+                            baseURL: environment === 'production'
+                                ? constants_1.SUDO_AFRICA_LIVE_URL
+                                : constants_1.Sudo_AFRICA_SANDBOX_URL,
                         };
                     },
                 }),
