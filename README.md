@@ -41,11 +41,15 @@ yarn  add @prymejo/sudo-africa-nestjs-module
 import { SudAfricaModule,SudoAfricaCardsService } from '@prymejo/sudo-africa-nestjs-module';
 
 @Module({
-imports: [SudAfricaModule.register(SUDO_AFRICA_API_KEY)],
+imports: [SudAfricaModule.register(api_key,environment)],
 controllers: [],
 providers: [SudoAfricaCardsService],
 })
 export  class  AppModule {}
+
+api_key is your sudo africa api key 
+
+environment can be either of "sandbox" or "production" (this will help in setting the api url the module will use for interacting with sudo)
 
 #Available service
 
